@@ -29,7 +29,8 @@ A high-performance, serverless social impact platform for rescuing and locating 
 Copy .env.example to .env.local and fill in your Firebase/Cloudinary keys.
 
 Spin up the environment:
-    ```docker-compose up```
+    ```bash
+    docker-compose up```
 
 - App: `http://localhost:3000`
 - Firebase Emulator UI: `http://localhost:4000`
