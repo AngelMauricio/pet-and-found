@@ -1,0 +1,18 @@
+{
+  "HomePage": {
+    "title-1": "Traga",
+    "title-2": "para casa",
+    "description": "Plataforma para ajudar a achar animais perdidos com colaboração comunitária.",
+    "buttonReport": "Animal Perdido",
+    "buttonMap": "Mapa",
+    "statsReunited": "Animais resgatados",
+    "statsRegion": "Região"
+  },
+  "Header": {
+    "title-1": "Achado e",
+    "title-2": "Latido",
+    "browse-map": "Mapa",
+    "Sign In": "Login",
+    "Register": "Cadastrar"
+  }
+}

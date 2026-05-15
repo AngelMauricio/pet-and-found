@@ -1,0 +1,18 @@
+{
+  "HomePage": {
+    "title-1": "Bring",
+    "title-2": "back home",
+    "description": "Social platform to help find lost pets through community collaboration.",
+    "buttonReport": "Report Lost Pet",
+    "buttonMap": "Map",
+    "statsReunited": "Reunited pets",
+    "statsRegion": "Region"
+  },
+  "Header": {
+    "title-1": "Lost and",
+    "title-2": "Pet",
+    "browse-map": "Browse Map",
+    "Sign In": "Sign In",
+    "Register": "Register"
+  }
+}

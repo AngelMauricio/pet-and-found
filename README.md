@@ -37,3 +37,7 @@ Spin up the environment:
 
 ## License
 MIT
+
+## Credits
+- Icons: [Flaticon](https://www.flaticon.com/)
+- Map Data: [OpenStreetMap](https://www.openstreetmap.org/)
