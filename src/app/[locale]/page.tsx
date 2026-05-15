@@ -6,11 +6,11 @@ export default function HomePage() {
   const t = useTranslations('HomePage');
 
   return (
-    <section className="relative h-[80vh] flex items-center justify-center">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section className="relative h-[70vh] flex items-center justify-center">
+      {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-sand-100/80 blur-3xl" />
         <div className="absolute bottom-[10%] right-[5%] w-[30%] h-[30%] rounded-full bg-sand-200/50 blur-3xl" />
-      </div>
+      </div> */}
 
       <div className="relative text-center max-w-3xl px-6">
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl leading-tight text-brand-primary">

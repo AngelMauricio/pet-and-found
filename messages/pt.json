@@ -1,4 +1,31 @@
 {
+  "Components": {
+    "button": {
+      "loading": "Carregando"
+    }
+  },
+  "ForgotPassword": {
+    "title": "Recuperar senha",
+    "description": "Digite o e-mail associado à sua conta e enviaremos um link para redefinir sua senha.",
+    "labelEmail": "E-mail",
+    "submitButton": "Enviar link",
+    "backToLogin": "Voltar para o login",
+    "successMessage": "E-mail de recuperação enviado! Verifique sua caixa de entrada.",
+    "errorMessage": "Ocorreu um erro ao tentar enviar o e-mail. Verifique se o endereço está correto."
+  },
+  "Footer": {
+    "Privacy Policy": "Política de Privacidade"
+  },
+  "Header": {
+    "title-1": "Achado e",
+    "title-2": "Latido",
+    "browse-map": "Mapa",
+    "sign-in": "Login",
+    "register": "Cadastrar",
+    "logout": "Deslogar",
+    "user-anonymous": "Usuário",
+    "my-reports": "Meu Reportes"
+  },
   "HomePage": {
     "title-1": "Traga",
     "title-2": "para casa",
@@ -8,11 +35,68 @@
     "statsReunited": "Animais resgatados",
     "statsRegion": "Região"
   },
-  "Header": {
-    "title-1": "Achado e",
-    "title-2": "Latido",
-    "browse-map": "Mapa",
-    "Sign In": "Login",
-    "Register": "Cadastrar"
+  "Login": {
+    "title": "Acessar conta",
+    "labelEmail": "E-mail",
+    "labelPassword": "Senha",
+    "submitButton": "Entrar",
+    "noAccountText": "Ainda não tem uma conta?",
+    "registerLink": "Cadastre-se",
+    "forgot-password": "Esqueci minha senha",
+    "errors": {
+      "invalidCredentials": "E-mail ou senha incorretos."
+    }
+  },
+  "NotFound": {
+    "title": "Página não encontrada",
+    "description": "Não encontramos a página que você estava procurando.",
+    "backHome": "Voltar"
+  },
+  "Register": {
+    "title": "Criar conta",
+    "labelName": "Nome",
+    "labelEmail": "E-mail",
+    "labelPassword": "Senha",
+    "submitButton": "Cadastrar",
+    "alreadyAccountText": "Já tem uma conta?",
+    "loginLink": "Entre",
+    "errors": {
+      "nameRequired": "O nome é obrigatório",
+      "emailInvalid": "Insira um e-mail válido",
+      "passwordTooWeak": "A senha deve ter no mínimo 8 caracteres, incluindo letras e números",
+      "auth/email-already-in-use": "Email já está cadastrado"
+    }
+  },
+  "Settings": {
+    "title": "Configurações da Conta",
+    "changePasswordTitle": "Alterar Senha",
+    "newPassword": "Nova senha",
+    "updateButton": "Atualizar Senha",
+    "passwordUpdated": "Sua senha foi atualizada com sucesso.",
+    "dangerZone": "Zona de Perigo",
+    "deleteWarning": "A exclusão da conta é permanente e não pode ser desfeita. Todos os seus dados, incluindo alertas de animais perdidos e encontrados, serão apagados do sistema.",
+    "deleteAccountButton": "Excluir Conta",
+    "confirmDelete": "Tem certeza de que deseja excluir sua conta permanentemente? Esta ação não pode ser desfeita.",
+    "confirmPasswordPrompt": "Para sua segurança, digite sua senha para confirmar a exclusão:",
+    "passwordPlaceholder": "Senha atual",
+    "cancelButton": "Cancelar",
+    "confirmDeleteButton": "Sim, apagar conta",
+    "profileTitle": "Perfil",
+    "labelName": "Nome de exibição",
+    "changePasswordOptional": "Alterar senha (opcional)",
+    "currentPassword": "Senha atual",
+    "confirmPassword": "Confirmar nova senha",
+    "saveChangesButton": "Salvar alterações",
+    "profileUpdated": "Perfil atualizado com sucesso.",
+    "errors": {
+      "nameRequired": "O nome não pode ficar vazio.",
+      "currentPasswordRequired": "Digite sua senha atual para autorizar a mudança.",
+      "passwordTooWeak": "A senha deve ter no mínimo 8 caracteres, incluindo letras e números.",
+      "passwordsDoNotMatch": "As senhas não coincidem.",
+      "wrongPassword": "Senha incorreta. Tente novamente.",
+      "auth/requires-recent-login": "Sua sessão expirou por segurança. Faça logout e login novamente para realizar esta ação.",
+      "auth/wrong-password": "Senha incorreta. Tente novamente.",
+      "no-user": "Você não está logado."
+    }
   }
 }

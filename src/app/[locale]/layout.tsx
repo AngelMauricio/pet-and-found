@@ -5,6 +5,24 @@ import { notFound } from 'next/navigation';
 import "../globals.css";
 import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+
+  return {
+    title: {
+      default: "Pet and Found",
+      template: "%s | Pet and Found" // O %s será substituído pelo título da página específica
+    },
+    description: locale === 'pt'
+      ? "Ajudando animais perdidos a encontrarem o caminho de casa em Curitiba."
+      : "Helping lost pets find their way home in Curitiba.",
+    icons: {
+      icon: '/favicon.ico', // Certifique-se de ter um favicon na pasta /public
+    }
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -22,11 +40,13 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className="h-full">
       <body className="flex flex-col min-h-screen bg-off-white text-brand-primary antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header />
-          {children}
+          <main className="flex-grow w-full max-w-7xl mx-auto py-16">
+            {children}
+          </main>
           <Footer />
         </NextIntlClientProvider>
       </body>

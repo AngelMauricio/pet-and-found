@@ -1,4 +1,31 @@
 {
+  "Components": {
+    "button": {
+      "loading": "Loading"
+    }
+  },
+  "ForgotPassword": {
+    "title": "Reset password",
+    "description": "Enter the email associated with your account and we will send you a link to reset your password.",
+    "labelEmail": "Email",
+    "submitButton": "Send reset link",
+    "backToLogin": "Back to login",
+    "successMessage": "Recovery email sent! Please check your inbox.",
+    "errorMessage": "An error occurred while sending the email. Please check if the address is correct."
+  },
+  "Footer": {
+    "Privacy Policy": "Privacy Policy"
+  },
+  "Header": {
+    "title-1": "Pet and",
+    "title-2": "Found",
+    "browse-map": "Browse Map",
+    "sign-in": "Sign In",
+    "register": "Register",
+    "logout": "Logout",
+    "user-anonymous": "User",
+    "my-reports": "My Reports"
+  },
   "HomePage": {
     "title-1": "Bring",
     "title-2": "back home",
@@ -8,11 +35,67 @@
     "statsReunited": "Reunited pets",
     "statsRegion": "Region"
   },
-  "Header": {
-    "title-1": "Lost and",
-    "title-2": "Pet",
-    "browse-map": "Browse Map",
-    "Sign In": "Sign In",
-    "Register": "Register"
+  "Login": {
+    "title": "Access account",
+    "labelEmail": "E-mail",
+    "labelPassword": "Password",
+    "submitButton": "Enter",
+    "noAccountText": "Don't have an account?",
+    "registerLink": "Register",
+    "errors": {
+      "invalidCredentials": "E-mail or password incorrect."
+    }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "We can't find the page you are looking for.",
+    "backHome": "Back"
+  },
+  "Register": {
+    "title": "Create Account",
+    "labelName": "Name",
+    "labelEmail": "E-mail",
+    "labelPassword": "Password",
+    "submitButton": "Register",
+    "alreadyAccountText": "Already have an account?",
+    "loginLink": "Sign in",
+    "errors": {
+      "nameRequired": "Name is mandatory",
+      "emailInvalid": "Use a valid email",
+      "passwordTooWeak": "Password must contain at least 8 digits, including letters and numbers",
+      "auth/email-already-in-use": "Email already in use"
+    }
+  },
+  "Settings": {
+    "title": "Account Settings",
+    "changePasswordTitle": "Change Password",
+    "newPassword": "New password",
+    "updateButton": "Update Password",
+    "passwordUpdated": "Your password has been successfully updated.",
+    "dangerZone": "Danger Zone",
+    "deleteWarning": "Account deletion is permanent and cannot be undone. All your data, including lost and found pet alerts, will be erased from the system.",
+    "deleteAccountButton": "Delete Account",
+    "confirmDelete": "Are you sure you want to permanently delete your account? This action cannot be undone.",
+    "confirmPasswordPrompt": "For your security, type your password to confirm your account exclusion:",
+    "passwordPlaceholder": "Current password",
+    "cancelButton": "Cancel",
+    "confirmDeleteButton": "Yes, delete account",
+    "profileTitle": "Perfil",
+    "labelName": "Name",
+    "changePasswordOptional": "Change Password (optional)",
+    "currentPassword": "Current password",
+    "confirmPassword": "Confirm new password",
+    "saveChangesButton": "Save changes",
+    "profileUpdated": "Perfil updated!",
+    "errors": {
+      "nameRequired": "Name can't be empty.",
+      "currentPasswordRequired": "Type your current password to confirm the changes.",
+      "passwordTooWeak": "Your password needs at least 8 digits, including numbers and letters.",
+      "passwordsDoNotMatch": "The passwords don't match.",
+      "wrongPassword": "Wrong password. Try again.",
+      "auth/requires-recent-login": "Your session has expired for security reasons. Please log out and log in again to perform this action.",
+      "auth/wrong-password": "Wrong password. Try again.",
+      "no-user": "Your are not logged in."
+    }
   }
 }

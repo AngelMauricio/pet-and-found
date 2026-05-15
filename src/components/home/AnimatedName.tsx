@@ -2,19 +2,25 @@
 
 import { useState, useEffect } from 'react';
 
-const nameOptions = ["Belinha", "Thor", "Amora", "Bóris", "Mel", "Luna", "Nina", "Meggie", "Pandora", "Luke", "Tom", "Simba", "Salém", "Oreo", "Bidu"];
+const nameOptions = ["Belinha", "Thor", "Amora", "Bóris", "Mel", "Luna", "Nina", "Meggie", "Luke", "Tom", "Simba", "Salém", "Oreo", "Bidu"];
 
 export const AnimatedName = () => {
   const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
 
-  // Evita o erro de Hydration (só renderiza após o mount no cliente)
   useEffect(() => {
     setMounted(true);
     
     const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % nameOptions.length);
-    }, 2000);
+      setVisible(false);
+
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % nameOptions.length);
+        setVisible(true);
+      }, 500); 
+
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -22,7 +28,11 @@ export const AnimatedName = () => {
   if (!mounted) return <span className="text-sand-600">...</span>;
 
   return (
-    <span className="text-sand-600 transition-all duration-500 ease-in-out">
+    <span 
+      className={`text-sand-600 inline-block transition-all duration-500 ease-in-out ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+      }`}
+    >
       {nameOptions[index]}
     </span>
   );
