@@ -35,6 +35,14 @@
     "statsReunited": "Animais resgatados",
     "statsRegion": "Região"
   },
+  "ImageUploader": {
+    "title": "Fotos do Animal",
+    "dragDrop": "Clique ou arraste uma foto aqui",
+    "maxSize": "PNG, JPG ou WEBP até 5MB",
+    "errorSize": "A imagem é muito grande. O limite é de 5MB.",
+    "cancelCrop": "Cancelar",
+    "confirmCrop": "Cortar Imagem"
+  },
   "Login": {
     "title": "Acessar conta",
     "labelEmail": "E-mail",
@@ -46,6 +54,10 @@
     "errors": {
       "invalidCredentials": "E-mail ou senha incorretos."
     }
+  },
+  "Map": {
+    "title": "Mapa de Animais",
+    "reportButton": "Registrar Animal"
   },
   "NotFound": {
     "title": "Página não encontrada",
@@ -65,6 +77,32 @@
       "emailInvalid": "Insira um e-mail válido",
       "passwordTooWeak": "A senha deve ter no mínimo 8 caracteres, incluindo letras e números",
       "auth/email-already-in-use": "Email já está cadastrado"
+    }
+  },
+  "ReportForm": {
+    "title": "Cadastrar Animal",
+    "labelTitle": "Nome ou Descrição Curta",
+    "placeholderTitle": "Ex: Mel, cachorro caramelo...",
+    "labelType": "Situação do animal",
+    "types": {
+      "lost": "Perdi meu pet",
+      "seen": "Avistei na rua",
+      "sheltered": "Está abrigado aqui"
+    },
+    "labelObs": "Observações (Opcional)",
+    "placeholderObs": "Detalhes como coleira, comportamento, etc.",
+    "continueButton": "Continuar",
+    "labelLocation": "Localização",
+    "helperLocation": "Clique no mapa para marcar onde o animal foi visto ou perdido.",
+    "errorLocation": "Por favor, selecione um local no mapa.",
+    "security": {
+      "title": "Aviso de Segurança",
+      "description": "Por favor, leia atentamente as dicas abaixo antes de publicar seu alerta para a comunidade:",
+      "tip1": "Evite colocar informações de contato (telefone/e-mail) na descrição. Utilize o chat interno da plataforma.",
+      "tip2": "Nunca coloque o endereço exato da sua casa nas descrições ou observações.",
+      "tip3": "Caso vá se encontrar com alguém para buscar ou entregar um animal, marque em locais públicos, movimentados e não vá sozinho.",
+      "cancel": "Voltar e editar",
+      "confirm": "Estou ciente, Publicar"
     }
   },
   "Settings": {

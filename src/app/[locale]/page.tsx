@@ -23,7 +23,7 @@ export default function HomePage() {
         
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Link 
-            href="/report-pet"
+            href="/report"
             className="px-10 py-4 text-lg rounded-full font-medium transition-all duration-200 flex items-center justify-center shadow-sm bg-sand-400 text-brand-primary hover:bg-sand-500 active:scale-95 w-full sm:w-auto"
           >
             {t('buttonReport')}

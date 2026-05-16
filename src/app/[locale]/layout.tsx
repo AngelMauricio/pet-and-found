@@ -41,6 +41,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className="h-full">
+      <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
+      </head>
       <body className="flex flex-col min-h-screen bg-off-white text-brand-primary antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header />
