@@ -24,7 +24,7 @@ A high-performance, serverless social impact platform for rescuing and locating 
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/your-user/pet-and-found.git](https://github.com/your-user/pet-and-found.git)
+git clone [https://github.com/AngelMauricio/pet-and-found.git](https://github.com/AngelMauricio/pet-and-found.git)
 cd pet-and-found
 npm install
 ```
