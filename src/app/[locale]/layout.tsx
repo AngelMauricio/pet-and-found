@@ -44,7 +44,7 @@ export default async function LocaleLayout({
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
       </head>
-      <body className="flex flex-col min-h-screen bg-off-white text-brand-primary antialiased">
+      <body className="flex flex-col min-h-screen bg-sand-50 text-brand-primary antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-grow w-full max-w-7xl mx-auto py-16">

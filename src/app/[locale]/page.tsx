@@ -37,7 +37,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-sand-200 flex justify-center gap-12">
+        {/* <div className="mt-16 pt-8 border-t border-sand-200 flex justify-center gap-12">
           <div className="text-center">
             <span className="block text-2xl font-bold text-brand-primary">150+</span>
             <span className="text-xs text-brand-muted uppercase tracking-wider">{t('statsReunited')}</span>
@@ -46,7 +46,7 @@ export default function HomePage() {
             <span className="block text-2xl font-bold text-brand-primary">Curitiba</span>
             <span className="text-xs text-brand-muted uppercase tracking-wider">{t('statsRegion')}</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

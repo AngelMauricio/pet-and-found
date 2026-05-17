@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
@@ -10,6 +10,7 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Header = () => {
     const t = useTranslations('Header');
+    const router = useRouter();
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -21,6 +22,11 @@ export const Header = () => {
 
         return () => unsubscribe();
     }, []);
+
+    const handleLogout = async () => {
+        await logout();      // Desloga no Firebase
+        router.push('/');    // Redireciona o usuário
+    };
 
     return (
         <header className="w-full py-4 px-6 bg-white border-b border-sand-200 shadow-sm">
@@ -49,10 +55,10 @@ export const Header = () => {
                                             </Link>
                                         </span>
                                         <button
-                                            onClick={() => logout()}
+                                            onClick={handleLogout}
                                             title={t('logout')}
                                             aria-label={t('logout')}
-                                            className="text-red-500 hover:text-red-700 transition-colors cursor-pointer"
+                                            className="text-sand-700 hover:text-sand-900 transition-colors cursor-pointer"
                                         >
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"

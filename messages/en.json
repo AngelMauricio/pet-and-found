@@ -58,6 +58,27 @@
     "title": "Pet Map",
     "reportButton": "Report Lost Pet"
   },
+  "MyReports": {
+    "title": "My Reports",
+    "loading": "Loading your reports...",
+    "noReports": "You haven't reported any pets yet.",
+    "createReport": "Create report",
+    "thPet": "Pet",
+    "thStatus": "Status",
+    "thDate": "Date",
+    "thActions": "Actions",
+    "page": "Page",
+    "view": "View",
+    "edit": "Edit report",
+    "delete": "Delete report",
+    "confirmDelete": "Are you sure you want to delete this report? This action cannot be undone.",
+    "errorDelete": "Error deleting the report. Please try again.",
+    "types": {
+      "lost": "Lost",
+      "seen": "Seen",
+      "sheltered": "Sheltered"
+    }
+  },
   "NotFound": {
     "title": "Page not found",
     "description": "We can't find the page you are looking for.",

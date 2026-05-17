@@ -1,6 +1,5 @@
 import { getTranslations } from 'next-intl/server';
 import MapWrapper from '@/components/map/MapWrapper';
-import { Button } from '@/components/ui/Button';
 import { Link } from '@/i18n/routing';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {

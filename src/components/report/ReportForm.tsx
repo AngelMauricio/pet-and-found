@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/Button';
 import { AlertTriangle, CheckCircle, X } from 'lucide-react';
 import { ImageUploader } from './ImageUploader';
 import dynamic from 'next/dynamic';
 import { auth, db } from '@/lib/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { updateDoc, doc, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useRouter } from '@/i18n/routing';
+
+interface ReportFormProps {
+    initialData?: any;
+    reportId?: string;
+}
 
 const LocationPicker = dynamic(() => import('./LocationPickerMap'), {
     ssr: false,
@@ -21,7 +26,7 @@ const LocationPicker = dynamic(() => import('./LocationPickerMap'), {
 
 type ReportType = 'lost' | 'seen' | 'sheltered' | '';
 
-export const ReportForm = () => {
+export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
     const t = useTranslations('ReportForm');
     const router = useRouter();
 
@@ -30,11 +35,24 @@ export const ReportForm = () => {
     const [observations, setObservations] = useState('');
     const [images, setImages] = useState<File[]>([]);
     const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+    const [existingImages, setExistingImages] = useState<string[]>(initialData?.images || []);
+
 
     const [showSecurityModal, setShowSecurityModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    // Abre o modal de segurança em vez de enviar direto
+    useEffect(() => {
+        if (initialData) {
+            setTitle(initialData.title);
+            setObservations(initialData.observations);
+            setType(initialData.type);
+            setLocation(initialData.location);
+            if (initialData.images) {
+                setExistingImages(initialData.images);
+            }
+        }
+    }, [initialData]);
+
     const handleInitialSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -53,7 +71,27 @@ export const ReportForm = () => {
         setIsLoading(true);
         try {
             const idToken = await auth.currentUser.getIdToken(true);
+            const originalImages = initialData?.images || [];
+            const imagesToDelete = originalImages.filter((img: string) => !existingImages.includes(img));
             const uploadedImageUrls: string[] = [];
+
+            for (const imgUrl of imagesToDelete) {
+                try {
+                    const url = new URL(imgUrl);
+                    const fileKey = url.pathname.substring(1);
+
+                    await fetch('/api/delete-upload', {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${idToken}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ fileKey })
+                    });
+                } catch (err) {
+                    console.error("Failed to delete image from R2:", err);
+                }
+            }
 
             for (const file of images) {
                 const res = await fetch('/api/upload-url', {
@@ -86,21 +124,25 @@ export const ReportForm = () => {
                 uploadedImageUrls.push(publicUrl);
             }
 
-            // 2. Save document to Firestore
-            await addDoc(collection(db, 'reports'), {
-                userId: auth.currentUser.uid,
+            const payload = {
                 title,
                 type,
                 observations,
                 location,
-                images: uploadedImageUrls,
-                status: 'active',
-                createdAt: serverTimestamp(),
-            });
+                images: [...existingImages, ...uploadedImageUrls],
+                createdAt: initialData?.createdAt || serverTimestamp(),
+                userId: auth.currentUser?.uid,
+                updatedAt: serverTimestamp(),
+            };
+
+            if (reportId) {
+                const reportRef = doc(db, 'reports', reportId);
+                await updateDoc(reportRef, payload);
+            } else {
+                await addDoc(collection(db, 'reports'), payload);
+            }
 
             setShowSecurityModal(false);
-
-            // TODO: Replace with Next.js router.push('/map')
             router.push('/my-reports');
 
         } catch (error) {
@@ -109,6 +151,10 @@ export const ReportForm = () => {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleRemoveExistingImage = (urlToRemove: string) => {
+        setExistingImages(prev => prev.filter(url => url !== urlToRemove));
     };
 
     return (

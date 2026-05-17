@@ -24,7 +24,7 @@
     "register": "Cadastrar",
     "logout": "Deslogar",
     "user-anonymous": "Usuário",
-    "my-reports": "Meu Reportes"
+    "my-reports": "Meus Reportes"
   },
   "HomePage": {
     "title-1": "Traga",
@@ -58,6 +58,27 @@
   "Map": {
     "title": "Mapa de Animais",
     "reportButton": "Registrar Animal"
+  },
+  "MyReports": {
+    "title": "Meus Alertas",
+    "loading": "Carregando seus alertas...",
+    "noReports": "Você ainda não cadastrou nenhum animal.",
+    "createReport": "Cadastrar alerta",
+    "thPet": "Animal",
+    "thStatus": "Situação",
+    "thDate": "Data",
+    "thActions": "Ações",
+    "page": "Página",
+    "view": "Visualizar",
+    "edit": "Editar alerta",
+    "delete": "Excluir alerta",
+    "confirmDelete": "Tem certeza que deseja excluir este alerta? Esta ação não pode ser desfeita.",
+    "errorDelete": "Erro ao excluir o alerta. Tente novamente.",
+    "types": {
+      "lost": "Perdido",
+      "seen": "Avistado",
+      "sheltered": "Abrigado"
+    }
   },
   "NotFound": {
     "title": "Página não encontrada",

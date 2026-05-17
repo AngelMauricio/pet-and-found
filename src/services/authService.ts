@@ -98,9 +98,10 @@ export const reauthenticateAndDelete = async (password: string) => {
     }
 };
 
-export const logout = () => {
-    const router = useRouter();
-
-    signOut(auth);
-    router.replace('/');
+export const logout = async () => {
+    try {
+        await signOut(auth);
+    } catch (error) {
+        console.error("Erro ao fazer logout", error);
+    }
 }

@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { ReportForm } from '@/components/report/ReportForm';
+import { AuthGuard } from '@/components/shared/AuthGuard';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -9,8 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function ReportPage() {
     return (
-        <div>
+        <AuthGuard>
             <ReportForm />
-        </div>
+        </AuthGuard>
     );
 }
