@@ -84,6 +84,20 @@
     "description": "We can't find the page you are looking for.",
     "backHome": "Back"
   },
+  "PetDetails": {
+    "back": "Back",
+    "lostOn": "Lost on",
+    "seenOn": "Seen on",
+    "shelteredOn": "Sheltered on",
+    "observations": "Observations",
+    "postedOn": "Posted on",
+    "contactOwner": "Contact owner",
+    "types": {
+      "lost": "Lost",
+      "seen": "Seen",
+      "sheltered": "Sheltered"
+    }
+  },
   "Register": {
     "title": "Create Account",
     "labelName": "Name",
@@ -104,6 +118,7 @@
     "labelTitle": "Name or Short Description",
     "placeholderTitle": "Ex: Mel, golden retriever...",
     "labelType": "Pet Status",
+    "labelImages": "Pictures",
     "types": {
       "lost": "I lost my pet",
       "seen": "I saw a pet",

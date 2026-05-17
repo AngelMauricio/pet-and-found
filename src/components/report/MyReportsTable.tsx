@@ -6,6 +6,7 @@ import { collection, query, where, orderBy, limit, getDocs, startAfter, endBefor
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { ChevronLeft, ChevronRight, Eye, Trash2, Pencil } from 'lucide-react';
+import { Button } from '../ui/Button';
 
 const PAGE_SIZE = 5;
 
@@ -161,19 +162,20 @@ export const MyReportsTable = () => {
                                             <Eye size={18} />
                                         </Link>
                                         <Link
-                                            href={`/edit/${report.id}`}
+                                            href={`/edit-report/${report.id}`}
                                             className="text-sand-500 hover:text-blue-500 transition-colors"
                                             title={t('edit')}
                                         >
                                             <Pencil size={18} />
                                         </Link>
-                                        <Link
-                                            href={`/delete/${report.id}`}
+                                        <button
+                                            onClick={() => handleDelete(report.id)}
                                             className="text-sand-500 hover:text-red-500 transition-colors cursor-pointer"
                                             title={t('delete')}
+                                            aria-label={t('delete')}
                                         >
                                             <Trash2 size={18} />
-                                        </Link>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>

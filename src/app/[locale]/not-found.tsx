@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import { BackButton } from '@/components/ui/BackButtons';
 
 export default function NotFound() {
   const t = useTranslations('NotFound');
@@ -10,21 +11,16 @@ export default function NotFound() {
         {/* Um ícone de pegada ou algo temático */}
         <span className="text-6xl">🐾</span>
       </div>
-      
+
       <h1 className="text-4xl font-bold text-brand-primary mb-4">
         {t('title')}
       </h1>
-      
+
       <p className="text-brand-secondary text-lg mb-10 max-w-md">
         {t('description')}
       </p>
 
-      <Link 
-        href="/" 
-        className="px-8 py-3 bg-sand-400 text-brand-primary rounded-full font-medium hover:bg-sand-500 transition-all shadow-sm"
-      >
-        {t('backHome')}
-      </Link>
+      <BackButton label={t('backHome')} />
     </div>
   );
 }

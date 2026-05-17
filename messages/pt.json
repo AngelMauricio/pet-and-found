@@ -30,7 +30,7 @@
     "title-1": "Traga",
     "title-2": "para casa",
     "description": "Plataforma para ajudar a achar animais perdidos com colaboração comunitária.",
-    "buttonReport": "Animal Perdido",
+    "buttonReport": "Cadastrar Animal",
     "buttonMap": "Mapa",
     "statsReunited": "Animais resgatados",
     "statsRegion": "Região"
@@ -85,6 +85,44 @@
     "description": "Não encontramos a página que você estava procurando.",
     "backHome": "Voltar"
   },
+  "PetDetails": {
+    "back": "Voltar",
+    "lostOn": "Perdido em",
+    "seenOn": "Avistado em",
+    "shelteredOn": "Abrigado em",
+    "observations": "Observações",
+    "postedOn": "Publicado em",
+    "contactOwner": "Entrar em contato com o responsável",
+    "types": {
+      "lost": "Perdido",
+      "seen": "Avistado",
+      "sheltered": "Abrigado"
+    }
+  },
+  "Privacy": {
+    "title": "Política de Privacidade",
+    "description": "Como coletamos e protegemos seus dados no Pet & Found.",
+    "back": "Voltar",
+    "lastUpdated": "Última atualização",
+    "sections": {
+      "dataCollection": {
+        "title": "1. Coleta de Dados e Autenticação",
+        "content": "Para garantir a segurança da plataforma e evitar spam, utilizamos o Google Firebase Authentication. Quando você cria uma conta, armazenamos as informações básicas providas pelo seu provedor de login (como endereço de e-mail e nome público). Não temos acesso a senhas caso utilize login social."
+      },
+      "location": {
+        "title": "2. Dados de Localização",
+        "content": "A plataforma coleta dados de localização (latitude e longitude) exclusivamente no momento em que você cadastra um alerta de um animal perdido ou avistado, de forma voluntária, através do clique no mapa interativo. Não rastreamos sua localização em tempo real ou em segundo plano."
+      },
+      "storage": {
+        "title": "3. Armazenamento de Imagens",
+        "content": "As fotos enviadas para os alertas são hospedadas publicamente em nossa infraestrutura na nuvem (Cloudflare R2). Ao fazer o upload, você concorda que estas imagens ficarão visíveis publicamente no mapa para auxiliar na identificação do animal. Você pode excluir as imagens a qualquer momento apagando ou editando o seu alerta."
+      },
+      "contact": {
+        "title": "4. Contato",
+        "content": "Como este é um projeto de código aberto/portfólio, os dados podem ser removidos do banco de dados a qualquer momento sem aviso prévio. Caso queira solicitar a exclusão manual e imediata dos seus dados, entre em contato com o desenvolvedor."
+      }
+    }
+  },
   "Register": {
     "title": "Criar conta",
     "labelName": "Nome",
@@ -105,6 +143,7 @@
     "labelTitle": "Nome ou Descrição Curta",
     "placeholderTitle": "Ex: Mel, cachorro caramelo...",
     "labelType": "Situação do animal",
+    "labelImages": "Fotos",
     "types": {
       "lost": "Perdi meu pet",
       "seen": "Avistei na rua",

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { DeleteObjectsCommand } from "@aws-sdk/client-s3";
 import { r2Client } from "@/lib/cloudflare";
 import { adminAuth, adminDb } from "@/lib/firebaseAdmin";
+import { revalidatePath } from 'next/cache';
 
 export async function DELETE(
     request: Request,
@@ -49,6 +50,8 @@ export async function DELETE(
         }
 
         await reportRef.delete();
+
+        revalidatePath(`/[locale]/pet/${reportId}`, 'page');
 
         return NextResponse.json({ success: true });
 

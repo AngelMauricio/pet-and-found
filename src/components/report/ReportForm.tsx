@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic';
 import { auth, db } from '@/lib/firebase';
 import { updateDoc, doc, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useRouter } from '@/i18n/routing';
+import { geohashForLocation } from 'geofire-common';
 
 interface ReportFormProps {
     initialData?: any;
@@ -35,6 +36,7 @@ export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
     const [observations, setObservations] = useState('');
     const [images, setImages] = useState<File[]>([]);
     const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+    const [geohash, setGeohash] = useState<string | null>(null);
     const [existingImages, setExistingImages] = useState<string[]>(initialData?.images || []);
 
 
@@ -47,6 +49,7 @@ export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
             setObservations(initialData.observations);
             setType(initialData.type);
             setLocation(initialData.location);
+            setGeohash(initialData.geohash);
             if (initialData.images) {
                 setExistingImages(initialData.images);
             }
@@ -129,6 +132,7 @@ export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
                 type,
                 observations,
                 location,
+                geohash,
                 images: [...existingImages, ...uploadedImageUrls],
                 createdAt: initialData?.createdAt || serverTimestamp(),
                 userId: auth.currentUser?.uid,
@@ -138,6 +142,12 @@ export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
             if (reportId) {
                 const reportRef = doc(db, 'reports', reportId);
                 await updateDoc(reportRef, payload);
+
+                fetch('/api/revalidate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: reportId })
+                }).catch(console.error);
             } else {
                 await addDoc(collection(db, 'reports'), payload);
             }
@@ -206,12 +216,56 @@ export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
                     </div>
                 </div>
 
-                {/* 3. Imagens (Placeholder para o próximo passo) */}
-                <ImageUploader
-                    maxImages={3}
-                    onImagesChange={(newImages) => setImages(newImages)}
-                />
+                {/* 3. Imagens */}
+                <div>
+                    <label className="block text-sm font-medium text-brand-secondary mb-3">
+                        {t('labelImages') || 'Fotos do animal'}
+                    </label>
 
+                    {/* Exibe imagens já existentes (Modo Edição) */}
+                    {existingImages.length > 0 && (
+                        <div className="mb-4">
+                            <p className="text-sm text-sand-500 mb-2">Fotos atuais (clique no X para remover):</p>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                {existingImages.map((imgUrl) => {
+                                    const fullUrl = imgUrl.startsWith('http')
+                                        ? imgUrl
+                                        : `${process.env.NEXT_PUBLIC_R2_PUBLIC_URL}/${imgUrl}`;
+
+                                    return (
+                                        <div key={imgUrl} className="relative group rounded-lg overflow-hidden border border-sand-200">
+                                            <img
+                                                src={fullUrl}
+                                                alt="Existing upload"
+                                                className="w-full h-24 object-cover"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => handleRemoveExistingImage(imgUrl)}
+                                                className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                                title="Remover foto"
+                                            >
+                                                <X size={14} />
+                                            </button>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Uploader para adicionar novas fotos */}
+                    <p className="text-sm text-sand-500 mb-2">
+                        {existingImages.length > 0 ? 'Adicionar novas fotos:' : 'Faça o upload de até 4 fotos:'}
+                    </p>
+                    <ImageUploader
+                        // O maxImages calcula dinamicamente o limite restante
+                        maxImages={4 - existingImages.length}
+                        onImagesChange={(newImages) => setImages(newImages)}
+                    />
+                </div>
+
+                {/* 4. Mapa */}
                 <div>
                     <label className="block text-sm font-medium text-brand-secondary mb-1">
                         {t('labelLocation')} <span className="text-red-500">*</span>
@@ -219,7 +273,11 @@ export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
                     <p className="text-xs text-sand-500 mb-3">{t('helperLocation')}</p>
 
                     <LocationPicker
-                        onLocationSelect={(coords) => setLocation(coords)}
+                        initialLocation={location}
+                        onLocationSelect={(coords) => {
+                            setLocation(coords);
+                            setGeohash(geohashForLocation([coords.lat, coords.lng]));
+                        }}
                     />
 
                     {!location && (
@@ -227,7 +285,7 @@ export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
                     )}
                 </div>
 
-                {/* 4. Observações */}
+                {/* 5. Observações */}
                 <div>
                     <label className="block text-sm font-medium text-brand-secondary mb-1 flex justify-between">
                         <span>{t('labelObs')}</span>
@@ -248,7 +306,6 @@ export const ReportForm = ({ initialData, reportId }: ReportFormProps) => {
                 </Button>
             </form>
 
-            {/* MODAL DE SEGURANÇA */}
             {showSecurityModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 animate-in fade-in">
                     <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl relative">

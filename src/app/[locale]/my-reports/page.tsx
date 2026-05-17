@@ -23,7 +23,7 @@ export default async function MyReportsPage({ params }: { params: Promise<{ loca
                     </h1>
                     <Link 
                         href="/report" 
-                        className="inline-block px-5 py-2.5 bg-brand-primary text-white rounded-lg text-sm font-medium hover:bg-brand-primary/90 transition-colors shadow-sm"
+                        className="inline-block px-5 py-2.5 bg-sand-400 text-brand-primary rounded-lg text-sm font-medium hover:bg-sand-500 transition-colors shadow-sm"
                     >
                         {t('createReport')}
                     </Link>
