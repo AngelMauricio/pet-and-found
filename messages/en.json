@@ -98,6 +98,30 @@
       "sheltered": "Sheltered"
     }
   },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "description": "How we collect and protect your data in Pet & Found.",
+    "back": "Back",
+    "lastUpdated": "Last Updated",
+    "sections": {
+      "dataCollection": {
+        "title": "1. Data Collection and Authentication",
+        "content": "To ensure the security of the platform and prevent spam, we use Google Firebase Authentication. When you create an account, we store the basic information provided by your login provider (such as email address and public name). We do not have access to passwords if you use social login."
+      },
+      "location": {
+        "title": "2. Location Data",
+        "content": "The platform collects location data (latitude and longitude) exclusively when you report a lost or seen animal, voluntarily, through clicking on the interactive map. We do not track your location in real-time or in the background."
+      },
+      "storage": {
+        "title": "3. Image Storage",
+        "content": "The photos uploaded for reports are hosted publicly in our cloud infrastructure (Cloudflare R2). By uploading, you agree that these images will be visible publicly on the map to help identify the animal. You can delete the images at any time by deleting or editing your report."
+      },
+      "contact": {
+        "title": "4. Contact",
+        "content": "Since this is an open-source/portfolio project, data can be removed from the database at any time without prior notice. If you wish to request manual and immediate deletion of your data, please contact the developer."
+      }
+    }
+  },
   "Register": {
     "title": "Create Account",
     "labelName": "Name",
